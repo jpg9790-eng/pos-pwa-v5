@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Review Order</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="review-container">
+  <h2>Order Summary</h2>
+
+  <div class="bill" id="bill"></div>
+
+  <h3>Payment Method</h3>
+  <select id="payment">
+    <option>Cash</option>
+    <option>UPI</option>
+    <option>Card</option>
+  </select>
+
+  <div class="actions">
+    <button onclick="printBill()">🖨️ Print</button>
+    <button onclick="downloadBill()">⬇️ Download</button>
+  </div>
+</div>
+
+<script src="review.js"></script>
+</body>
+</html>

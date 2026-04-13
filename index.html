@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>POS App</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+
+<body>
+<header>
+  <h2>POS App</h2>
+  <button onclick="resetApp()">Reset</button>
+</header>
+
+<section>
+  <button onclick="toggleScan()">📷 Scan</button>
+  <div id="scanner"></div>
+</section>
+
+<section>
+  <h3>Cart</h3>
+  <div id="cart"></div>
+</section>
+
+<section>
+  <h3 id="total"></h3>
+</section>
+
+<section>
+  <input placeholder="Manual barcode"
+    onkeypress="if(event.key==='Enter') handleScan(this.value)" />
+</section>
+
+<section>
+  <h3>Import CSV</h3>
+  <input type="file" accept=".csv" onchange="importCSV(event)" />
+</section>
+
+<footer>
+  <button onclick="reviewOrder()">Review Order</button>
+</footer>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3>Add Product</h3>
+    <input id="mname" placeholder="Name"/>
+    <input id="mprice" type="number" placeholder="Price"/>
+    <select id="mcat">
+      <option value="food">Food (5%)</option>
+      <option value="electronics">Electronics (18%)</option>
+      <option value="other">Other (12%)</option>
+    </select>
+    <button onclick="saveNewProduct()">Save</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+</body>
+</html>
